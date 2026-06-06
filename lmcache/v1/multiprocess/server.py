@@ -101,6 +101,7 @@ class MPCacheEngine:
         """Close all modules and release shared resources."""
         for module in self._modules:
             module.close()
+        self._context._session_manager.close()
         self._context.storage_manager.close()
         logger.info("MPCacheEngine closed")
 
